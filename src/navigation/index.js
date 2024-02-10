@@ -1,7 +1,14 @@
 const NAVIGATION = {
-  AUTHNAVIGATION: {
+  AUTH_NAVIGATION: {
+    INDEX: "Auth Navigation",
     LOGIN: "Login",
-    SIGNUP: "signup",
+    SIGNUP: "Signup",
+  },
+
+  HOME_NAVIGATION: {
+    INDEX: "Home Navigation",
+    HOME: "Home",
+    BOOK_DETAIL: "Book Detail",
   },
 };
 
