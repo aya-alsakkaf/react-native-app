@@ -1,4 +1,4 @@
-import instance from ".";
+import { instance } from ".";
 
 const getAllBooks = async () => {
   const { data } = await instance.get("/api/books/");

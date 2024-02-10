@@ -21,10 +21,10 @@ const Homescreen = () => {
         onPress={() => {
           navigation.navigate(NAVIGATION.HOME_NAVIGATION.BOOK_DETAIL, {
             _id: book._id,
-            title: book.title,
-            price: book.price,
-            author: book.author,
-            image: book.image,
+            // title: book.title,
+            // price: book.price,
+            // author: book.author,
+            // image: book.image,
           });
         }}
       />
