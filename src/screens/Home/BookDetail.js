@@ -9,7 +9,6 @@ import { ScrollView } from "react-native-gesture-handler";
 const BookDetail = () => {
   const route = useRoute();
   const { _id } = route.params;
-
   const { data: book } = useQuery({
     queryKey: ["bookByID", _id],
     queryFn: () => getBookByID(_id),
