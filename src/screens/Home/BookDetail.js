@@ -2,7 +2,7 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { useRoute } from "@react-navigation/native";
 import { useQuery } from "@tanstack/react-query";
-import { getBookByID } from "../../api/books";
+import { getBookByID } from "../../api/Books/books";
 import { BASEURL } from "../../api";
 import { ScrollView } from "react-native-gesture-handler";
 

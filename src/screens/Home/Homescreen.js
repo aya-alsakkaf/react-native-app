@@ -2,7 +2,7 @@ import { Pressable, SafeAreaView, ScrollView, View } from "react-native";
 import React from "react";
 import Book from "../../components/Book";
 import { useQuery } from "@tanstack/react-query";
-import { getAllBooks } from "../../api/books";
+import { getAllBooks } from "../../api/Books/books";
 import { useNavigation } from "@react-navigation/native";
 import NAVIGATION from "../../navigation";
 
@@ -37,7 +37,6 @@ const Homescreen = () => {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-
       }}
     >
       <ScrollView>{BookCards}</ScrollView>

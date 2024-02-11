@@ -1,3 +1,4 @@
+import React, { useContext, useState } from "react";
 import {
   View,
   Text,
@@ -6,12 +7,26 @@ import {
   Pressable,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import NAVIGATION from "../../navigation/index";
+import { useMutation } from "@tanstack/react-query";
+import { login } from "../../api/Auth/Auth";
+import { UserContext } from "../../context/UserContext";
 
 const Login = () => {
+  const [user, setUser] = useState({});
   const navigation = useNavigation();
+  const { setIsAuthenticated } = useContext(UserContext);
+  const { mutate, isPending } = useMutation({
+    mutationKey: ["login"],
+    mutationFn: () => login(user),
+    onSuccess: () => {
+      setIsAuthenticated(true);
+    },
+    onError: (error) => {
+      alert(error);
+    },
+  });
   return (
     <View
       style={{
@@ -35,7 +50,7 @@ const Login = () => {
             marginBottom: 10,
           }}
         >
-          Username
+          Phone Number
         </Text>
         <TextInput
           style={{
@@ -45,7 +60,10 @@ const Login = () => {
             padding: 10,
             borderRadius: 10,
           }}
-          placeholder="Please enter your username"
+          placeholder="Please enter your phone number"
+          onChangeText={(text) => {
+            setUser({ ...user, phoneNumber: text });
+          }}
         />
       </View>
 
@@ -75,20 +93,42 @@ const Login = () => {
             borderRadius: 10,
           }}
           placeholder="Password"
+          onChangeText={(text) => {
+            setUser({ ...user, password: text });
+          }}
         />
       </View>
 
       <View
-        style={{
-          backgroundColor: "brown",
-          width: "100%",
-          padding: 3,
-          margin: 10,
-          borderRadius: 10,
-          width: "96%",
-        }}
+        style={
+          isPending
+            ? {
+                backgroundColor: "gray",
+                width: "100%",
+                padding: 3,
+                margin: 10,
+                borderRadius: 10,
+                width: "96%",
+              }
+            : {
+                backgroundColor: "brown",
+                width: "100%",
+                padding: 3,
+                margin: 10,
+                borderRadius: 10,
+                width: "96%",
+              }
+        }
       >
-        <Button title="LOGIN" color="white" onPress={() => {}} />
+        <Button
+          disabled={isPending}
+          title="LOGIN"
+          color="white"
+          onPress={() => {
+            // console.log(user);
+            mutate();
+          }}
+        />
       </View>
 
       <View style={{ marginTop: 20 }}>
