@@ -8,6 +8,7 @@ import { useNavigation } from "@react-navigation/native";
 import { deleteToken } from "../../api/Auth/storage";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
+import AddTrip from "../../screens/Home/AddTrip";
 const Stack = createStackNavigator();
 const HomeNavigation = () => {
   return (
@@ -22,6 +23,10 @@ const HomeNavigation = () => {
       <Stack.Screen
         name={NAVIGATION.HOME_NAVIGATION.BOOK_DETAIL}
         component={BookDetail}
+      />
+      <Stack.Screen
+        name={NAVIGATION.HOME_NAVIGATION.ADD_TRIP}
+        component={AddTrip}
       />
     </Stack.Navigator>
   );

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { UserContext } from "./src/context/UserContext";
 import { getToken } from "./src/api/Auth/storage";
 import AuthNavigation from "./src/navigation/AuthNavigation/AuthNavigation";
+import { NativeBaseProvider } from "native-base";
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -19,12 +20,14 @@ export default function App() {
     checkToken();
   }, []);
   return (
-    <UserContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
-      <QueryClientProvider client={new QueryClient()}>
-        <NavigationContainer>
-          {isAuthenticated ? <MainNavigation /> : <AuthNavigation />}
-        </NavigationContainer>
-      </QueryClientProvider>
-    </UserContext.Provider>
+    <NativeBaseProvider>
+      <UserContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
+        <QueryClientProvider client={new QueryClient()}>
+          <NavigationContainer>
+            {isAuthenticated ? <MainNavigation /> : <AuthNavigation />}
+          </NavigationContainer>
+        </QueryClientProvider>
+      </UserContext.Provider>
+    </NativeBaseProvider>
   );
 }

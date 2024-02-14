@@ -1,49 +1,53 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { BASEURL } from "../api";
+import { AspectRatio, Box, Center, HStack, Heading, Stack } from "native-base";
 
-const Book = ({ image, title, description, user, onPress = () => {} }) => {
+const Trip = ({ image, title, description, user, onPress = () => {} }) => {
   return (
-    <TouchableOpacity
-      onPress={() => {
-        onPress();
-      }}
-      style={{
-        margin: 10,
-        padding: 10,
-        backgroundColor: "white",
-        borderRadius: 20,
-
-      }}
-    >
-      <View style={{ alignItems: "center"}}>
-        <Image
-          style={{
-            width: "100%",
-            height: 200,
-            borderRadius: 20,
-            objectFit: "cover",
+    <TouchableOpacity onPress={() => onPress()} style={{ marginTop: 10 }}>
+      <Box alignItems="center">
+        <Box
+          maxW="80"
+          rounded="lg"
+          overflow="hidden"
+          borderColor="coolGray.200"
+          borderWidth="1"
+          _dark={{
+            borderColor: "coolGray.600",
+            backgroundColor: "gray.700",
           }}
-          source={{
-            uri: `${BASEURL}/${image}`,
+          _web={{
+            shadow: 2,
+            borderWidth: 0,
           }}
-        />
-
-        <Text
-          style={{
-            fontWeight: "bold",
-            marginTop: 14,
-            fontSize: 20,
+          _light={{
+            backgroundColor: "gray.50",
           }}
         >
-          {title}
-        </Text>
-       
-      </View>
+          <Box>
+            <AspectRatio w="100%" ratio={16 / 9}>
+              <Image
+                source={{
+                  uri: `${BASEURL}/${image}`,
+                }}
+                alt="image"
+              />
+            </AspectRatio>
+          </Box>
+          <Stack p="4" space={3}>
+            <Stack space={2}>
+              <Center>
+                <Heading size="md" ml="-1">
+                  {title}
+                </Heading>
+              </Center>
+            </Stack>
+          </Stack>
+        </Box>
+      </Box>
     </TouchableOpacity>
   );
 };
 
-export default Book;
-
-
+export default Trip;

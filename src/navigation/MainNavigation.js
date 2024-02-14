@@ -4,6 +4,7 @@ import AuthNavigation from "./AuthNavigation/AuthNavigation";
 import NAVIGATION from ".";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Profile from "../screens/Auth/Profile";
+import AddTrip from "../screens/Home/AddTrip";
 
 const Tab = createBottomTabNavigator();
 const MainNavigation = () => {
@@ -20,6 +21,16 @@ const MainNavigation = () => {
         }}
         name={NAVIGATION.HOME_NAVIGATION.INDEX}
         component={HomeNavigation}
+      />
+      <Tab.Screen
+        options={{
+          tabBarLabel: "Add",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="plus" color={color} size={size} />
+          ),
+        }}
+        name="Add"
+        component={AddTrip}
       />
       <Tab.Screen
         options={{

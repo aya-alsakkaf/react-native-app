@@ -50,7 +50,7 @@ const Login = () => {
             marginBottom: 10,
           }}
         >
-          Phone Number
+          Username
         </Text>
         <TextInput
           style={{

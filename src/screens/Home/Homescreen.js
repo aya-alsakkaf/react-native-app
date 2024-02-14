@@ -1,6 +1,6 @@
 import { Pressable, SafeAreaView, ScrollView, View } from "react-native";
 import React from "react";
-import Book from "../../components/Book";
+import Trip from "../../components/Book";
 import { useQuery } from "@tanstack/react-query";
 import { getAllTrips } from "../../api/Trips/trips";
 import { useNavigation } from "@react-navigation/native";
@@ -17,7 +17,8 @@ const Homescreen = () => {
   const navigation = useNavigation();
   const TripCards = data?.map((trip) => {
     return (
-      <Book
+      <Trip
+        key={trip._id}
         image={trip.image}
         title={trip.title}
         description={trip.description}

@@ -10,6 +10,7 @@ const NAVIGATION = {
     INDEX: "Home Navigation",
     HOME: "Home",
     BOOK_DETAIL: "Trip Detail",
+    ADD_TRIP: "Add Trip",
   },
 };
 
