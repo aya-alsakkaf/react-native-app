@@ -12,7 +12,7 @@ const AuthNavigation = () => {
     <Stack.Navigator>
       <Stack.Screen name={NAVIGATION.AUTH_NAVIGATION.LOGIN} component={Login} />
       <Stack.Screen
-        name={NAVIGATION.AUTH_NAVIGATION.SIGNUP}
+        name={NAVIGATION.AUTH_NAVIGATION.REGISTER}
         component={Signup}
       />
     </Stack.Navigator>

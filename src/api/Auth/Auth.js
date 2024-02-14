@@ -1,15 +1,12 @@
-import { instance } from ".";
+import { instance } from "..";
 
 const login = async (userInfo) => {
-  const { data } = await instance.post("mini-project/api/auth/login", userInfo);
+  const { data } = await instance.post("/login", userInfo);
   return data;
 };
 
 const register = async (userInfo) => {
-  const { data } = await instance.post(
-    "mini-project/api/auth/register",
-    userInfo
-  );
+  const { data } = await instance.post("/register", userInfo);
   return data;
 };
 export { login };

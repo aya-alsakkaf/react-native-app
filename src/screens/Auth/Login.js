@@ -60,9 +60,9 @@ const Login = () => {
             padding: 10,
             borderRadius: 10,
           }}
-          placeholder="Please enter your phone number"
+          placeholder="Username"
           onChangeText={(text) => {
-            setUser({ ...user, phoneNumber: text });
+            setUser({ ...user, username: text.toLocaleLowerCase() });
           }}
         />
       </View>
@@ -134,7 +134,7 @@ const Login = () => {
       <View style={{ marginTop: 20 }}>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate(NAVIGATION.AUTH_NAVIGATION.SIGNUP);
+            navigation.navigate(NAVIGATION.AUTH_NAVIGATION.REGISTER);
           }}
         >
           <Text>

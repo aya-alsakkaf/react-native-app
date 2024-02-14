@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
+import { BASEURL } from "../api";
 
-const baseURL = "http://localhost:8001/";
-const Book = ({ image, title, onPress = () => {} }) => {
+const Book = ({ image, title, description, user, onPress = () => {} }) => {
   return (
     <TouchableOpacity
       onPress={() => {
@@ -13,18 +13,19 @@ const Book = ({ image, title, onPress = () => {} }) => {
         padding: 10,
         backgroundColor: "white",
         borderRadius: 20,
+
       }}
     >
-      <View style={{ alignItems: "center" }}>
+      <View style={{ alignItems: "center"}}>
         <Image
           style={{
-            width: "40%",
+            width: "100%",
             height: 200,
             borderRadius: 20,
             objectFit: "cover",
           }}
           source={{
-            uri: `${baseURL}${image}`,
+            uri: `${BASEURL}/${image}`,
           }}
         />
 
@@ -37,6 +38,7 @@ const Book = ({ image, title, onPress = () => {} }) => {
         >
           {title}
         </Text>
+       
       </View>
     </TouchableOpacity>
   );
@@ -44,4 +46,4 @@ const Book = ({ image, title, onPress = () => {} }) => {
 
 export default Book;
 
-const styles = StyleSheet.create({});
+

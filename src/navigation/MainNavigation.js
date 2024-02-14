@@ -3,6 +3,7 @@ import HomeNavigation from "./Home/HomeNavigation";
 import AuthNavigation from "./AuthNavigation/AuthNavigation";
 import NAVIGATION from ".";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import Profile from "../screens/Auth/Profile";
 
 const Tab = createBottomTabNavigator();
 const MainNavigation = () => {
@@ -28,7 +29,7 @@ const MainNavigation = () => {
           ),
         }}
         name={NAVIGATION.AUTH_NAVIGATION.INDEX}
-        component={AuthNavigation}
+        component={Profile}
       />
     </Tab.Navigator>
   );

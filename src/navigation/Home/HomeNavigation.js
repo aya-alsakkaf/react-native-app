@@ -46,7 +46,7 @@ const HomeRightHeader = () => {
           deleteToken();
           setIsAuthenticated(false);
           navigation.navigate(NAVIGATION.AUTH_NAVIGATION.INDEX, {
-            screen: NAVIGATION.AUTH_NAVIGATION.SIGNUP,
+            screen: NAVIGATION.AUTH_NAVIGATION.REGISTER,
           });
         }}
       >

@@ -2,29 +2,29 @@ import { Pressable, SafeAreaView, ScrollView, View } from "react-native";
 import React from "react";
 import Book from "../../components/Book";
 import { useQuery } from "@tanstack/react-query";
-import { getAllBooks } from "../../api/Books/books";
+import { getAllTrips } from "../../api/Trips/trips";
 import { useNavigation } from "@react-navigation/native";
 import NAVIGATION from "../../navigation";
 
 const Homescreen = () => {
   const { data } = useQuery({
-    queryKey: ["allBooks"],
-    queryFn: () => getAllBooks(),
+    queryKey: ["allTrips"],
+    queryFn: () => getAllTrips(),
+    onSucess: (data) => {
+      console.log(data);
+    },
   });
   const navigation = useNavigation();
-  const BookCards = data?.map((book) => {
+  const TripCards = data?.map((trip) => {
     return (
       <Book
-        image={book.image}
-        title={book.title}
-        // key={book._id}
+        image={trip.image}
+        title={trip.title}
+        description={trip.description}
+        user={trip.user}
         onPress={() => {
           navigation.navigate(NAVIGATION.HOME_NAVIGATION.BOOK_DETAIL, {
-            _id: book._id,
-            // title: book.title,
-            // price: book.price,
-            // author: book.author,
-            // image: book.image,
+            _id: trip._id,
           });
         }}
       />
@@ -39,7 +39,7 @@ const Homescreen = () => {
         alignItems: "center",
       }}
     >
-      <ScrollView>{BookCards}</ScrollView>
+      <ScrollView>{TripCards}</ScrollView>
     </SafeAreaView>
   );
 };
